@@ -189,6 +189,98 @@ function generateTitles(content, contentType, targetAudience, tone) {
             `${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Services Tailored for ${targetAudience}`,
             `Proven ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Methods for Business Growth`,
             `Reliable ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Support When You Need It Most`
+        ],
+        'video': [
+            // Video-focused titles
+            `The Ultimate ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Video Guide`,
+            `Watch: Complete ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Tutorial`,
+            `${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)}: Everything You Need to Know (Video)`,
+            `Master ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} in This Comprehensive Video`,
+            `Video Guide: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Best Practices`,
+            
+            // Educational video titles
+            `Learn ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Step-by-Step (Video Tutorial)`,
+            `Video Tutorial: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} for ${targetAudience}`,
+            `Complete ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Video Course`,
+            
+            // Engaging video titles
+            `Must-Watch: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Video Guide`,
+            `Video: The Truth About ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)}`,
+            `${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Secrets Revealed (Video)`,
+            
+            // Action-oriented video titles
+            `Transform Your ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} with This Video`,
+            `Video: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Strategies That Work`,
+            `Watch and Learn: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Masterclass`
+        ],
+        'email': [
+            // Email-focused titles
+            `Email Marketing: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Best Practices`,
+            `The Complete ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Email Guide`,
+            `Email Strategy: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} for ${targetAudience}`,
+            `Master Email ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} in 2024`,
+            `Email Marketing ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} That Converts`,
+            
+            // Email campaign titles
+            `Email Campaign: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Success Strategies`,
+            `Email Templates for ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)}`,
+            `Email Automation: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Workflows`,
+            
+            // Email engagement titles
+            `Boost Email Engagement with ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)}`,
+            `Email Subject Lines: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} That Get Opens`,
+            `Email Content: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Best Practices`,
+            
+            // Email ROI titles
+            `Email ROI: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Strategies That Work`,
+            `Email Marketing ROI: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} for Growth`,
+            `Email Success: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Case Studies`
+        ],
+        'social': [
+            // Social media-focused titles
+            `Social Media ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Strategy`,
+            `The Complete ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Social Media Guide`,
+            `Social Media Marketing: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Best Practices`,
+            `Master Social Media ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} in 2024`,
+            `Social Media ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} for ${targetAudience}`,
+            
+            // Platform-specific titles
+            `Instagram ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Strategy`,
+            `Facebook ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Guide`,
+            `LinkedIn ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Best Practices`,
+            
+            // Social engagement titles
+            `Boost Social Media Engagement with ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)}`,
+            `Social Media Content: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} That Gets Shares`,
+            `Social Media Growth: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Strategies`,
+            
+            // Social ROI titles
+            `Social Media ROI: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} That Converts`,
+            `Social Media Success: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Case Studies`,
+            `Social Media Marketing: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} for Business Growth`
+        ],
+        'landing': [
+            // Landing page-focused titles
+            `Landing Page ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Optimization`,
+            `The Complete ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Landing Page Guide`,
+            `Landing Page Design: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Best Practices`,
+            `Master Landing Page ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} in 2024`,
+            `Landing Page ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} for ${targetAudience}`,
+            
+            // Conversion-focused titles
+            `Landing Page Conversion: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Strategies`,
+            `High-Converting Landing Page ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)}`,
+            `Landing Page Optimization: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Techniques`,
+            
+            // Design-focused titles
+            `Landing Page Design: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Principles`,
+            `Landing Page UX: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Best Practices`,
+            `Landing Page Copy: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} That Converts`,
+            
+            // Performance titles
+            `Landing Page Performance: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Optimization`,
+            `Landing Page ROI: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Strategies`,
+            `Landing Page Success: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Case Studies`
         ]
     };
     
@@ -332,6 +424,50 @@ function generateDescriptions(content, contentType, targetAudience, tone) {
             `Maximize your ${mainTopic} investment with our proven methodologies and experienced team. Results-driven approach for ${targetAudience}.`,
             `Optimize your ${mainTopic} performance with data-driven insights and strategic guidance. Expert analysis and actionable recommendations.`,
             `Scale your ${mainTopic} capabilities with our comprehensive support services. From consultation to ongoing optimization.`
+        ],
+        'video': [
+            // Video-focused descriptions
+            `Watch our comprehensive ${mainTopic} video guide. Learn step-by-step techniques and best practices for ${validAudience}.`,
+            `Master ${mainTopic} through our detailed video tutorial. Perfect for ${validAudience} looking to enhance their skills visually.`,
+            `Discover ${mainTopic} strategies through engaging video content. Real examples and practical demonstrations for immediate application.`,
+            
+            // Educational video descriptions
+            `Learn ${mainTopic} fundamentals through our video course. From basics to advanced techniques, all explained with clear visual examples.`,
+            `Visual learning at its best: our ${mainTopic} video series breaks down complex concepts into easy-to-follow tutorials.`,
+            `Transform your understanding of ${mainTopic} with our comprehensive video library. Expert instruction for ${validAudience}.`
+        ],
+        'email': [
+            // Email-focused descriptions
+            `Master email marketing ${mainTopic} with our comprehensive guide. Learn proven strategies that drive engagement and conversions for ${validAudience}.`,
+            `Discover email ${mainTopic} best practices that actually work. From subject lines to content optimization, everything you need to know.`,
+            `Transform your email campaigns with ${mainTopic} strategies. Expert guidance for ${validAudience} looking to improve email performance.`,
+            
+            // Email campaign descriptions
+            `Learn email ${mainTopic} techniques that boost open rates and click-through rates. Practical strategies for ${validAudience}.`,
+            `Master email automation ${mainTopic} workflows. Streamline your email marketing and improve results with proven methodologies.`,
+            `Optimize your email ${mainTopic} for maximum ROI. Data-driven strategies and best practices for modern email marketing.`
+        ],
+        'social': [
+            // Social media-focused descriptions
+            `Master social media ${mainTopic} strategies that drive engagement and growth. Expert guidance for ${validAudience} in the digital age.`,
+            `Discover social media ${mainTopic} best practices that actually work. From content creation to audience engagement, everything you need to know.`,
+            `Transform your social media presence with ${mainTopic} techniques. Proven strategies for ${validAudience} looking to grow their online reach.`,
+            
+            // Platform-specific descriptions
+            `Learn platform-specific ${mainTopic} strategies for Instagram, Facebook, LinkedIn, and more. Tailored approaches for ${validAudience}.`,
+            `Master social media ${mainTopic} across all major platforms. Comprehensive strategies that work for every social media channel.`,
+            `Optimize your social media ${mainTopic} for maximum engagement and conversions. Data-driven approaches for modern social media marketing.`
+        ],
+        'landing': [
+            // Landing page-focused descriptions
+            `Master landing page ${mainTopic} optimization techniques. Learn proven strategies that convert visitors into customers for ${validAudience}.`,
+            `Discover landing page ${mainTopic} best practices that drive conversions. From design to copy optimization, everything you need to know.`,
+            `Transform your landing page performance with ${mainTopic} strategies. Expert guidance for ${validAudience} looking to improve conversion rates.`,
+            
+            // Conversion-focused descriptions
+            `Learn landing page ${mainTopic} techniques that boost conversion rates. Practical strategies for ${validAudience} in competitive markets.`,
+            `Master landing page ${mainTopic} for maximum ROI. Data-driven optimization strategies and best practices for modern landing pages.`,
+            `Optimize your landing page ${mainTopic} for better user experience and higher conversions. Proven methodologies for ${validAudience}.`
         ]
     };
     
@@ -462,6 +598,70 @@ function generateSocialCopy(content, contentType, targetAudience, tone) {
             `📈 Maximize your ${mainTopic} investment with our proven methodologies. Results-driven approach for ${targetAudience}. #${mainTopic} #Investment`,
             `📊 Optimize your ${mainTopic} performance with data-driven insights. Expert analysis and actionable recommendations. #${mainTopic} #Optimization`,
             `🚀 Scale your ${mainTopic} capabilities with our comprehensive support. From consultation to ongoing optimization. #${mainTopic} #Scaling`
+        ],
+        'video': [
+            // Video-focused social posts
+            `🎥 New video alert! Master ${mainTopic} with our comprehensive tutorial. Step-by-step guidance for ${validAudience}! #${mainTopic} #Video`,
+            `📹 Just uploaded: The complete ${mainTopic} video guide! Learn everything you need to know with clear visual examples. #${mainTopic} #Tutorial`,
+            `🎬 Watch and learn: ${mainTopic} strategies that actually work! Real examples and practical demonstrations. #${mainTopic} #Learning`,
+            
+            // Educational video social posts
+            `📚 Visual learning at its best! Our ${mainTopic} video series breaks down complex concepts into easy-to-follow tutorials. #${mainTopic} #Education`,
+            `🎓 From beginner to expert: Master ${mainTopic} through our comprehensive video course. Perfect for ${validAudience}! #${mainTopic} #Course`,
+            `💡 Transform your understanding of ${mainTopic} with our video library. Expert instruction with visual examples. #${mainTopic} #Expertise`,
+            
+            // Engaging video social posts
+            `🔥 Must-watch: The truth about ${mainTopic} revealed in our latest video! Real insights you won't find anywhere else. #${mainTopic} #Insights`,
+            `✨ Video tutorial: ${mainTopic} secrets that will change how you approach everything! Don't miss this one. #${mainTopic} #Secrets`,
+            `🚀 Level up your ${mainTopic} skills with our video masterclass! Professional techniques made simple. #${mainTopic} #Masterclass`
+        ],
+        'email': [
+            // Email-focused social posts
+            `📧 Email marketing mastery: ${mainTopic} strategies that drive engagement and conversions! Essential for ${validAudience}. #${mainTopic} #EmailMarketing`,
+            `📨 Discover email ${mainTopic} best practices that actually work! From subject lines to content optimization. #${mainTopic} #Email`,
+            `📬 Transform your email campaigns with ${mainTopic} techniques! Expert guidance for better performance. #${mainTopic} #Campaigns`,
+            
+            // Email campaign social posts
+            `📊 Boost your email ${mainTopic} performance! Learn techniques that increase open rates and click-through rates. #${mainTopic} #EmailROI`,
+            `⚡ Master email automation ${mainTopic} workflows! Streamline your email marketing for better results. #${mainTopic} #Automation`,
+            `🎯 Optimize your email ${mainTopic} for maximum ROI! Data-driven strategies for modern email marketing. #${mainTopic} #Optimization`,
+            
+            // Email engagement social posts
+            `📈 Email engagement secrets: ${mainTopic} strategies that get your emails opened and clicked! #${mainTopic} #Engagement`,
+            `💌 Email subject line mastery: ${mainTopic} techniques that boost open rates! #${mainTopic} #SubjectLines`,
+            `📋 Email content optimization: ${mainTopic} best practices for higher conversions! #${mainTopic} #Content`
+        ],
+        'social': [
+            // Social media-focused social posts
+            `📱 Social media mastery: ${mainTopic} strategies that drive engagement and growth! Essential for ${validAudience}. #${mainTopic} #SocialMedia`,
+            `📲 Discover social media ${mainTopic} best practices that actually work! From content creation to audience engagement. #${mainTopic} #Social`,
+            `📸 Transform your social media presence with ${mainTopic} techniques! Proven strategies for growth. #${mainTopic} #Growth`,
+            
+            // Platform-specific social posts
+            `📷 Instagram ${mainTopic} strategies that get results! Platform-specific techniques for better engagement. #${mainTopic} #Instagram`,
+            `📘 Facebook ${mainTopic} guide: Best practices for maximum reach and engagement! #${mainTopic} #Facebook`,
+            `💼 LinkedIn ${mainTopic} strategies for professional networking! Tailored approaches for business growth. #${mainTopic} #LinkedIn`,
+            
+            // Social engagement social posts
+            `🔥 Boost your social media engagement with ${mainTopic}! Proven techniques that get your content shared. #${mainTopic} #Engagement`,
+            `📈 Social media growth: ${mainTopic} strategies that expand your reach! #${mainTopic} #Growth`,
+            `🎯 Social media ROI: ${mainTopic} techniques that convert followers into customers! #${mainTopic} #ROI`
+        ],
+        'landing': [
+            // Landing page-focused social posts
+            `🎯 Landing page mastery: ${mainTopic} optimization techniques that convert visitors into customers! #${mainTopic} #LandingPage`,
+            `📄 Discover landing page ${mainTopic} best practices that drive conversions! From design to copy optimization. #${mainTopic} #Landing`,
+            `🚀 Transform your landing page performance with ${mainTopic} strategies! Expert guidance for better conversions. #${mainTopic} #Performance`,
+            
+            // Conversion-focused social posts
+            `💰 Boost your conversion rates with ${mainTopic} landing page techniques! Practical strategies for ${validAudience}. #${mainTopic} #Conversions`,
+            `📊 Landing page ROI: ${mainTopic} optimization strategies for maximum returns! #${mainTopic} #ROI`,
+            `🎨 Landing page design: ${mainTopic} principles that improve user experience and conversions! #${mainTopic} #Design`,
+            
+            // Performance social posts
+            `⚡ Landing page performance: ${mainTopic} optimization techniques that work! #${mainTopic} #Performance`,
+            `📈 Landing page success: ${mainTopic} case studies and proven strategies! #${mainTopic} #Success`,
+            `🎯 High-converting landing pages: ${mainTopic} strategies that get results! #${mainTopic} #Results`
         ]
     };
     
