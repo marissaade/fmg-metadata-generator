@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FMG Metadata Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>FMG Metadata Generator</h1>
+            <p>Generate SEO-optimized metadata for your content</p>
+        </header>
+
+        <main>
+            <form id="metadataForm" class="metadata-form">
+                <div class="form-group">
+                    <label for="contentType">Content Type:</label>
+                    <select id="contentType" name="contentType" required>
+                        <option value="">Select content type...</option>
+                        <option value="article">Article</option>
+                        <option value="blog">Blog Post</option>
+                        <option value="product">Product</option>
+                        <option value="service">Service</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="content">Content:</label>
+                    <textarea 
+                        id="content" 
+                        name="content" 
+                        placeholder="Paste your content here..." 
+                        rows="8" 
+                        required
+                    ></textarea>
+                    <div class="char-count">
+                        <span id="charCount">0</span> characters
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="targetAudience">Target Audience (optional):</label>
+                    <input 
+                        type="text" 
+                        id="targetAudience" 
+                        name="targetAudience" 
+                        placeholder="e.g., Small business owners, 25-45 years old"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="tone">Tone (optional):</label>
+                    <select id="tone" name="tone">
+                        <option value="">Select tone...</option>
+                        <option value="professional">Professional</option>
+                        <option value="friendly">Friendly</option>
+                        <option value="casual">Casual</option>
+                        <option value="authoritative">Authoritative</option>
+                        <option value="conversational">Conversational</option>
+                    </select>
+                </div>
+
+                <button type="submit" id="generateBtn" class="generate-btn">
+                    <span class="btn-text">Generate Metadata</span>
+                    <span class="btn-loading" style="display: none;">
+                        <div class="spinner"></div>
+                        Generating...
+                    </span>
+                </button>
+            </form>
+
+            <div id="results" class="results" style="display: none;">
+                <h2>Generated Metadata</h2>
+                
+                <div class="metadata-section">
+                    <h3>Titles</h3>
+                    <div id="titles" class="metadata-options"></div>
+                </div>
+
+                <div class="metadata-section">
+                    <h3>Meta Descriptions</h3>
+                    <div id="descriptions" class="metadata-options"></div>
+                </div>
+
+                <div class="metadata-section">
+                    <h3>Social Media Copy</h3>
+                    <div id="socialCopy" class="metadata-options"></div>
+                </div>
+
+                <div id="complianceWarnings" class="compliance-warnings" style="display: none;">
+                    <h3>⚠️ Compliance Warnings</h3>
+                    <div id="warningsList"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
