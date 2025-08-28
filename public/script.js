@@ -162,7 +162,7 @@ function createMetadataOption(text, id) {
     option.innerHTML = `
         <div class="metadata-text">${text}</div>
         <div class="metadata-actions">
-            <button class="copy-btn" onclick="copyToClipboard('${text.replace(/'/g, "\\'")}')">
+            <button class="copy-btn" onclick="copyToClipboard('${text.replace(/'/g, "\\'")}', event)">
                 Copy
             </button>
             <button class="regenerate-btn" onclick="regenerateOption('${id}')">
@@ -188,20 +188,27 @@ function createMetadataOption(text, id) {
 }
 
 // Copy to clipboard function
-function copyToClipboard(text) {
+function copyToClipboard(text, event) {
     navigator.clipboard.writeText(text).then(() => {
-        // Find the button that was clicked
-        const buttons = document.querySelectorAll('.copy-btn');
-        buttons.forEach(btn => {
-            if (btn.textContent === 'Copy') {
-                btn.textContent = 'Copied!';
-                btn.classList.add('copied');
-                setTimeout(() => {
-                    btn.textContent = 'Copy';
-                    btn.classList.remove('copied');
-                }, 2000);
-            }
-        });
+        // Get the specific button that was clicked
+        const button = event.target;
+        const originalText = button.textContent;
+        
+        // Update the clicked button
+        button.textContent = 'Copied!';
+        button.classList.add('copied');
+        
+        // Add a subtle animation
+        button.style.transform = 'scale(1.05)';
+        button.style.transition = 'all 0.2s ease';
+        
+        // Reset after 2 seconds
+        setTimeout(() => {
+            button.textContent = originalText;
+            button.classList.remove('copied');
+            button.style.transform = 'scale(1)';
+        }, 2000);
+        
     }).catch(err => {
         console.error('Failed to copy text: ', err);
         alert('Failed to copy to clipboard');
