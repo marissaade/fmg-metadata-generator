@@ -25,6 +25,7 @@ class GeminiService {
             }
         } catch (error) {
             console.log('❌ Gemini API not available, using template fallback:', error.message);
+            console.log('Full error details:', error);
             this.isAvailable = false;
         }
     }
@@ -56,6 +57,7 @@ class GeminiService {
             };
         } catch (error) {
             console.log('🔄 Gemini generation failed, using template fallback:', error.message);
+            console.log('Main generation error details:', error);
             return templateFallback();
         }
     }
@@ -72,6 +74,7 @@ class GeminiService {
             return this.parseTitles(text);
         } catch (error) {
             console.log('Title generation failed:', error.message);
+            console.log('Title generation error details:', error);
             return null;
         }
     }
@@ -87,6 +90,7 @@ class GeminiService {
             return this.parseDescriptions(text);
         } catch (error) {
             console.log('Description generation failed:', error.message);
+            console.log('Description generation error details:', error);
             return null;
         }
     }
@@ -102,6 +106,7 @@ class GeminiService {
             return this.parseSocialCopy(text);
         } catch (error) {
             console.log('Social copy generation failed:', error.message);
+            console.log('Social copy generation error details:', error);
             return null;
         }
     }
