@@ -1,7 +1,11 @@
+// Load environment variables
+require('dotenv').config();
+
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const bodyParser = require('body-parser');
+const geminiService = require('./services/geminiService');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -886,15 +890,32 @@ app.post('/api/generate', async (req, res) => {
     try {
         const { contentType, content, targetAudience, tone } = req.body;
         
-        // Generate realistic metadata based on content analysis
-        const result = {
-            titles: generateTitles(content, contentType, targetAudience, tone),
-            descriptions: generateDescriptions(content, contentType, targetAudience, tone),
-            socialCopy: generateSocialCopy(content, contentType, targetAudience, tone),
-            warnings: []
+        // Template fallback function
+        const templateFallback = () => {
+            console.log('🔄 Using template fallback for metadata generation');
+            return {
+                titles: generateTitles(content, contentType, targetAudience, tone),
+                descriptions: generateDescriptions(content, contentType, targetAudience, tone),
+                socialCopy: generateSocialCopy(content, contentType, targetAudience, tone),
+                warnings: []
+            };
         };
         
-        // Simulate processing time
+        // Try Gemini first, fallback to templates if needed
+        const result = await geminiService.generateMetadata(
+            content, 
+            contentType, 
+            targetAudience, 
+            tone, 
+            templateFallback
+        );
+        
+        // Add warnings array if not present
+        if (!result.warnings) {
+            result.warnings = [];
+        }
+        
+        // Simulate processing time for consistency
         await new Promise(resolve => setTimeout(resolve, 800));
         
         res.json(result);
