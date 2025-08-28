@@ -36,7 +36,7 @@ function extractKeyTopics(content, maxTopics = 5) {
         .trim();
     
     // Split into words and filter out common words and short words
-    const commonWords = new Set(['the', 'and', 'for', 'with', 'that', 'this', 'have', 'will', 'from', 'they', 'know', 'want', 'been', 'good', 'much', 'some', 'time', 'very', 'when', 'come', 'just', 'into', 'than', 'more', 'other', 'about', 'many', 'then', 'them', 'these', 'so', 'people', 'can', 'said', 'each', 'which', 'she', 'do', 'how', 'their', 'if', 'up', 'out', 'many', 'then', 'them', 'would', 'write', 'go', 'see', 'number', 'no', 'way', 'could', 'my', 'than', 'first', 'water', 'been', 'call', 'who', 'oil', 'sit', 'now', 'find', 'down', 'day', 'did', 'get', 'come', 'made', 'may', 'part']);
+    const commonWords = new Set(['the', 'and', 'for', 'with', 'that', 'this', 'have', 'will', 'from', 'they', 'know', 'want', 'been', 'good', 'much', 'some', 'time', 'very', 'when', 'come', 'just', 'into', 'than', 'more', 'other', 'about', 'many', 'then', 'them', 'these', 'so', 'people', 'can', 'said', 'each', 'which', 'she', 'do', 'how', 'their', 'if', 'up', 'out', 'many', 'then', 'them', 'would', 'write', 'go', 'see', 'number', 'no', 'way', 'could', 'my', 'than', 'first', 'water', 'been', 'call', 'who', 'oil', 'sit', 'now', 'find', 'down', 'day', 'did', 'get', 'come', 'made', 'may', 'part', 'billion', 'million', 'dollars', 'year', 'years', 'continue', 'continues', 'continuing', 'remains', 'remain', 'reflecting', 'reflects', 'impact', 'strong', 'financial', 'markets', 'individuals', 'corporations', 'generosity', 'economy', 'force', 'major', 'key', 'part']);
     
     const words = cleanContent
         .split(/\s+/)
@@ -75,6 +75,38 @@ function ensureCompleteWord(word) {
     return word;
 }
 
+// Helper function to intelligently detect content type based on content
+function detectContentType(content, userSelectedType) {
+    const lowerContent = content.toLowerCase();
+    
+    // Keywords that indicate specific content types
+    const keywords = {
+        'charitable': ['charitable', 'donation', 'donations', 'giving', 'philanthropy', 'nonprofit', 'charity', 'fundraising'],
+        'financial': ['financial', 'investment', 'investing', 'money', 'finance', 'economic', 'economy', 'market', 'markets'],
+        'business': ['business', 'company', 'corporate', 'enterprise', 'startup', 'entrepreneur'],
+        'technology': ['technology', 'tech', 'software', 'app', 'digital', 'online', 'web', 'internet'],
+        'health': ['health', 'medical', 'wellness', 'fitness', 'nutrition', 'healthcare'],
+        'education': ['education', 'learning', 'teaching', 'school', 'university', 'course', 'training']
+    };
+    
+    // Count keyword matches for each type
+    const scores = {};
+    Object.keys(keywords).forEach(type => {
+        scores[type] = keywords[type].filter(keyword => lowerContent.includes(keyword)).length;
+    });
+    
+    // Find the type with the highest score
+    const detectedType = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+    
+    // If we have a strong signal for a specific type, use it
+    if (scores[detectedType] >= 2) {
+        return detectedType;
+    }
+    
+    // Otherwise, use the user's selection but with some intelligence
+    return userSelectedType;
+}
+
 // Helper function to format hashtags properly
 function formatHashtags(text) {
     return text.replace(/#(\w+)/g, (match, hashtag) => {
@@ -95,6 +127,9 @@ function generateTitles(content, contentType, targetAudience, tone) {
     const mainTopic = ensureCompleteWord(topics[0]) || 'content';
     const secondaryTopic = ensureCompleteWord(topics[1]) || 'strategies';
     const thirdTopic = ensureCompleteWord(topics[2]) || 'success';
+    
+    // Detect the actual content type based on the content
+    const detectedType = detectContentType(content, contentType);
     
     // Extensive template library with audience targeting
     const allTemplates = {
@@ -281,10 +316,56 @@ function generateTitles(content, contentType, targetAudience, tone) {
             `Landing Page Performance: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Optimization`,
             `Landing Page ROI: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Strategies`,
             `Landing Page Success: ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Case Studies`
+        ],
+        'charitable': [
+            // Charitable giving-focused titles
+            `The Impact of ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)}: A Complete Guide`,
+            `Understanding ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} in 2024`,
+            `${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)}: Trends and Insights for ${targetAudience}`,
+            `The Future of ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)}: What You Need to Know`,
+            `${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Statistics and Analysis`,
+            
+            // Impact-focused titles
+            `How ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} is Changing the World`,
+            `The Power of ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)}: Real Impact Stories`,
+            `${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)}: Making a Difference in 2024`,
+            
+            // Educational titles
+            `Everything You Need to Know About ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)}`,
+            `${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)}: A Comprehensive Overview`,
+            `The Complete Guide to ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)}`,
+            
+            // Trend-focused titles
+            `${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Trends in 2024: What's New`,
+            `The State of ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)}: Current Landscape`,
+            `${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)}: Key Insights and Opportunities`
+        ],
+        'financial': [
+            // Financial-focused titles
+            `${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)}: Financial Insights and Analysis`,
+            `The Economics of ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)}`,
+            `${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)}: Market Trends and Opportunities`,
+            `Financial Impact of ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} in 2024`,
+            `${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)}: Investment and Growth Strategies`,
+            
+            // Market-focused titles
+            `${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)} Market Analysis: What You Need to Know`,
+            `The Financial Landscape of ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)}`,
+            `${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)}: Economic Trends and Forecasts`,
+            
+            // Strategy-focused titles
+            `${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)}: Strategic Financial Planning`,
+            `Maximizing Returns in ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)}`,
+            `${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)}: Financial Best Practices`,
+            
+            // Growth-focused titles
+            `${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)}: Growth Opportunities and Strategies`,
+            `The Financial Future of ${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)}`,
+            `${mainTopic.charAt(0).toUpperCase() + mainTopic.slice(1)}: Investment Insights for ${targetAudience}`
         ]
     };
     
-    let templates = allTemplates[contentType] || allTemplates['article'];
+    let templates = allTemplates[detectedType] || allTemplates[contentType] || allTemplates['article'];
     
     // Randomly select 5 unique templates
     const shuffled = templates.sort(() => 0.5 - Math.random());
@@ -355,6 +436,9 @@ function generateDescriptions(content, contentType, targetAudience, tone) {
     const topics = extractKeyTopics(content, 2);
     const mainTopic = ensureCompleteWord(topics[0]) || 'content';
     const secondaryTopic = ensureCompleteWord(topics[1]) || 'information';
+    
+    // Detect the actual content type based on the content
+    const detectedType = detectContentType(content, contentType);
     
     // Ensure targetAudience is valid
     const validAudience = targetAudience && targetAudience.trim() ? targetAudience.trim() : 'professionals';
@@ -468,10 +552,37 @@ function generateDescriptions(content, contentType, targetAudience, tone) {
             `Learn landing page ${mainTopic} techniques that boost conversion rates. Practical strategies for ${validAudience} in competitive markets.`,
             `Master landing page ${mainTopic} for maximum ROI. Data-driven optimization strategies and best practices for modern landing pages.`,
             `Optimize your landing page ${mainTopic} for better user experience and higher conversions. Proven methodologies for ${validAudience}.`
+        ],
+        'charitable': [
+            // Charitable giving-focused descriptions
+            `Discover the latest trends and insights in ${mainTopic}. Learn about the impact of charitable giving and how it's shaping our communities.`,
+            `Explore the world of ${mainTopic} and understand its significance in today's society. Expert analysis and real-world impact stories.`,
+            `Learn about the power of ${mainTopic} and how it's making a difference. Comprehensive coverage of trends, statistics, and success stories.`,
+            
+            // Impact-focused descriptions
+            `Understand the real impact of ${mainTopic} on communities and individuals. Data-driven insights and compelling stories of change.`,
+            `Discover how ${mainTopic} is transforming lives and communities. Expert analysis of trends, challenges, and opportunities.`,
+            `Explore the significance of ${mainTopic} in modern society. Learn about its economic and social impact on our world.`,
+            
+            // Educational descriptions
+            `Get comprehensive insights into ${mainTopic} and its role in society. Expert analysis, statistics, and real-world examples.`,
+            `Master the fundamentals of ${mainTopic} with our detailed guide. From basic concepts to advanced strategies and impact measurement.`,
+            `Transform your understanding of ${mainTopic} with expert analysis, case studies, and practical insights for ${validAudience}.`
+        ],
+        'financial': [
+            // Financial-focused descriptions
+            `Discover the financial implications of ${mainTopic} and its impact on the economy. Expert analysis and market insights for ${validAudience}.`,
+            `Learn about the economic aspects of ${mainTopic} and how it affects financial markets and investment opportunities.`,
+            `Explore the financial landscape of ${mainTopic} with comprehensive analysis of trends, opportunities, and market dynamics.`,
+            
+            // Market-focused descriptions
+            `Understand the market dynamics of ${mainTopic} and its financial impact. Expert insights for investors and financial professionals.`,
+            `Get detailed analysis of ${mainTopic} from a financial perspective. Market trends, investment opportunities, and economic impact.`,
+                         `Master the financial aspects of ${mainTopic} with expert guidance and comprehensive market analysis for ${validAudience}.`
         ]
     };
     
-    let templates = allTemplates[contentType] || allTemplates['article'];
+    let templates = allTemplates[detectedType] || allTemplates[contentType] || allTemplates['article'];
     
     // Randomly select 3 unique templates
     const shuffled = templates.sort(() => 0.5 - Math.random());
@@ -529,6 +640,9 @@ function generateSocialCopy(content, contentType, targetAudience, tone) {
     const topics = extractKeyTopics(content, 2);
     const mainTopic = ensureCompleteWord(topics[0]) || 'content';
     const secondaryTopic = ensureCompleteWord(topics[1]) || 'strategies';
+    
+    // Detect the actual content type based on the content
+    const detectedType = detectContentType(content, contentType);
     
     // Ensure targetAudience is valid
     const validAudience = targetAudience && targetAudience.trim() ? targetAudience.trim() : 'professionals';
@@ -662,10 +776,37 @@ function generateSocialCopy(content, contentType, targetAudience, tone) {
             `⚡ Landing page performance: ${mainTopic} optimization techniques that work! #${mainTopic} #Performance`,
             `📈 Landing page success: ${mainTopic} case studies and proven strategies! #${mainTopic} #Success`,
             `🎯 High-converting landing pages: ${mainTopic} strategies that get results! #${mainTopic} #Results`
+        ],
+        'charitable': [
+            // Charitable giving-focused social posts
+            `💝 New insights on ${mainTopic}! Discover the impact of charitable giving and how it's changing lives. #${mainTopic} #CharitableGiving`,
+            `📊 Just published: The latest statistics on ${mainTopic} and its impact on communities. Essential reading! #${mainTopic} #Impact`,
+            `🎯 Understanding ${mainTopic}: How charitable giving is making a difference in 2024. #${mainTopic} #Philanthropy`,
+            
+            // Impact-focused social posts
+            `🌟 The power of ${mainTopic}: Real stories of how charitable giving transforms communities. #${mainTopic} #Stories`,
+            `📈 Discover the trends in ${mainTopic} and how they're shaping the future of philanthropy. #${mainTopic} #Trends`,
+            `💡 Learn about the significance of ${mainTopic} in today's society. Expert analysis and insights. #${mainTopic} #Insights`,
+            
+            // Educational social posts
+            `📚 Everything you need to know about ${mainTopic}: A comprehensive guide to charitable giving. #${mainTopic} #Guide`,
+            `🎓 Master the fundamentals of ${mainTopic} with our detailed analysis. From basics to advanced insights. #${mainTopic} #Education`,
+            `🔍 Explore the world of ${mainTopic} and understand its role in modern philanthropy. #${mainTopic} #Philanthropy`
+        ],
+        'financial': [
+            // Financial-focused social posts
+            `💰 New analysis: The financial impact of ${mainTopic} on the economy. Expert insights for investors. #${mainTopic} #Finance`,
+            `📊 Just released: Economic analysis of ${mainTopic} and its market implications. #${mainTopic} #Economics`,
+            `🎯 Understanding the financial landscape of ${mainTopic}: Market trends and opportunities. #${mainTopic} #Markets`,
+            
+            // Market-focused social posts
+            `📈 Discover the market dynamics of ${mainTopic} and investment opportunities. #${mainTopic} #Investment`,
+            `💼 Financial insights on ${mainTopic}: How it affects markets and economic growth. #${mainTopic} #Growth`,
+            `📋 Expert analysis of ${mainTopic} from a financial perspective. Market trends and forecasts. #${mainTopic} #Analysis`
         ]
     };
     
-    let templates = allTemplates[contentType] || allTemplates['article'];
+    let templates = allTemplates[detectedType] || allTemplates[contentType] || allTemplates['article'];
     
     // Randomly select 3 unique templates
     const shuffled = templates.sort(() => 0.5 - Math.random());
