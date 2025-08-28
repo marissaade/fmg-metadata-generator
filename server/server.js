@@ -795,12 +795,12 @@ function generateSocialCopy(content, contentType, targetAudience, tone) {
         ],
         'financial': [
             // Financial-focused social posts
-            `💰 New analysis: The financial impact of ${mainTopic} on the economy. Expert insights for investors. #${mainTopic} #Finance`,
-            `📊 Just released: Economic analysis of ${mainTopic} and its market implications. #${mainTopic} #Economics`,
+            `📊 New analysis: The financial impact of ${mainTopic} on the economy. Expert insights for investors. #${mainTopic} #Finance`,
+            `📈 Just released: Economic analysis of ${mainTopic} and its market implications. #${mainTopic} #Economics`,
             `🎯 Understanding the financial landscape of ${mainTopic}: Market trends and opportunities. #${mainTopic} #Markets`,
             
             // Market-focused social posts
-            `📈 Discover the market dynamics of ${mainTopic} and investment opportunities. #${mainTopic} #Investment`,
+            `📊 Discover the market dynamics of ${mainTopic} and investment opportunities. #${mainTopic} #Investment`,
             `💼 Financial insights on ${mainTopic}: How it affects markets and economic growth. #${mainTopic} #Growth`,
             `📋 Expert analysis of ${mainTopic} from a financial perspective. Market trends and forecasts. #${mainTopic} #Analysis`
         ]
